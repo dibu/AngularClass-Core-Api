@@ -51,5 +51,16 @@ namespace AngularClass_Core_Api.Helper {
             }
             return response;
         }
+
+        public List<KeyValuePair<int,string>> GetChartTypes() {
+            var distinctChartType = teamMatrixData.Where(c=> c.SelectToken("chart_type").ToString().Length > 0).Select(c => c.SelectToken("chart_type").ToString()).Distinct().ToArray();
+            Dictionary<int,string> chartsData = new Dictionary<int, string>();
+
+            for (int i = 1; i < distinctChartType.Count(); i++) {
+                chartsData.Add(i, distinctChartType[i]);
+            }
+
+            return chartsData.ToList();
+        }
     }
 }

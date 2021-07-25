@@ -22,5 +22,10 @@ namespace AngularClass_Core_Api.Controllers {
                  
             return JToken.Parse(JsonConvert.SerializeObject(matrixProcessor.processMatrixData(keyName)));
         }
+
+        [HttpGet("GetChartData")]
+        public List<KeyValuePair<int, string>> GetChartData() {
+            return matrixProcessor.GetChartTypes();
+        }
     }
 }
